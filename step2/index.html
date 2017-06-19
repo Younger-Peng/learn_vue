@@ -6,14 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
   <style>
-  
+    .complete {
+      text-decoration: line-through;
+    }
   </style>
   <title>List render</title>
 </head>
 <body>
   <div id="app">
     <ul>
-      <Li v-for="task in tasks">
+      <Li v-for="task in tasks" v-bind:class="{complete: task.completed}">
         {{ task.item }}
       </Li>
     </ul>
