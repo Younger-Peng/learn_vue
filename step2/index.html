@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--<link href="https://cdn.bootcss.com/bootstrap/4.0.0-alpha.6/css/bootstrap-grid.css" rel="stylesheet">-->
   <script src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
   <style>
     .complete {
@@ -14,13 +15,22 @@
 </head>
 <body>
   <div id="app">
-    <ul>
-      <Li v-for="task in tasks" v-bind:class="{complete: task.completed}" @click="toggleClass(task)">
-        {{ task.item }}
-      </Li>
-    </ul>
+    <task-app :list="tasks"></task-app>
   </div>
+  <template id="task-template">
+      <ul>
+        <li v-for="task in list" :class="{complete: task.completed}" @click="toggleClass(task)">
+          {{ task.item }} 
+        </li>
+    </ul>
+  </template>
   <script>
+
+    Vue.component('task-app', {
+      template: '#task-template',
+      props: ['list']
+    });
+
     new Vue({
       el: '#app',
       data: {
