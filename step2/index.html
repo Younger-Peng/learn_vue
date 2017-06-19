@@ -23,7 +23,8 @@
         <span v-show="remaining"> ({{remaining}}) </span>
       </h1>
       <li v-for="task in list" :class="{complete: task.completed}" @click="toggleClass(task)">
-        {{ task.item }} 
+        {{ task.item }}
+        <strong @click="deleteTask(task)">x</strong>
       </li>
     </ul>
   </template>
@@ -35,7 +36,12 @@
       methods: {
         toggleClass(task){
           task.completed = !task.completed
+        },
+        deleteTask(task){
+          let index = this.list.indexOf(task)
+          this.list.splice(index, 1)
         }
+        
       },
       computed: {
         remaining(){
