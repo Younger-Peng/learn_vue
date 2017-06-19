@@ -28,7 +28,12 @@
 
     Vue.component('task-app', {
       template: '#task-template',
-      props: ['list']
+      props: ['list'],
+      methods: {
+        toggleClass(task){
+          task.completed = !task.completed
+        }
+      }
     });
 
     new Vue({
@@ -39,11 +44,6 @@
           {item: 'go to shop',completed: true},
           {item: 'go to ski',completed: false}
         ]
-      },
-      methods: {
-        toggleClass(task){
-          task.completed = !task.completed
-        }
       }
     })
   </script>
