@@ -14,7 +14,7 @@
   <div id="app">
     <ul>
       <Li v-for="task in tasks">
-        {{task}}
+        {{ task.item }}
       </Li>
     </ul>
   </div>
@@ -23,9 +23,9 @@
       el: '#app',
       data: {
         tasks: [
-          'go to movie',
-          'go to shop',
-          'go to ski',
+          {item: 'go to movie',completed: false},
+          {item: 'go to shop',completed: true},
+          {item: 'go to ski',completed: false}
         ]
       }
     })
