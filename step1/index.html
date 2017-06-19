@@ -24,7 +24,11 @@
 </head>
 <body>
   <div id="app">
-    {{firstname + " " + lastname}}
+    {{username}}
+    <br>
+    <input type="text" v-model="firstname">
+    <br>
+    <input type="text" v-model="lastname">
   </div>
   <script>
     new Vue({
@@ -34,7 +38,9 @@
         lastname: 'Yang'
       },
       computed: {
-        
+        username(){
+          return this.firstname + ' ' + this.lastname
+        }
       }
     })
   </script>
