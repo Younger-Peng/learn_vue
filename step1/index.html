@@ -24,14 +24,18 @@
 </head>
 <body>
   <div id="app">
-    Level {{point <= 100 ? '普通会员' : 'VIP会员'}}
+    Level {{level}}
   </div>
   <script>
     new Vue({
       el: '#app',
       data: {
         point: 100,
-        message: 'Hello Plearner'
+      },
+      computed: {
+        level(){
+          return this.point <= 100 ? '普通会员' : 'VIP会员'
+        }
       }
     })
   </script>
