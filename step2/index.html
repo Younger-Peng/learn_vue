@@ -18,10 +18,11 @@
     <task-app :list="tasks"></task-app>
   </div>
   <template id="task-template">
-      <ul>
-        <li v-for="task in list" :class="{complete: task.completed}" @click="toggleClass(task)">
-          {{ task.item }} 
-        </li>
+    <ul>
+      <h1>My Task ({{remaining}})</h1>
+      <li v-for="task in list" :class="{complete: task.completed}" @click="toggleClass(task)">
+        {{ task.item }} 
+      </li>
     </ul>
   </template>
   <script>
@@ -32,6 +33,11 @@
       methods: {
         toggleClass(task){
           task.completed = !task.completed
+        }
+      },
+      computed: {
+        remaining(){
+          return this.list.filter(item => !item.completed).length
         }
       }
     });
