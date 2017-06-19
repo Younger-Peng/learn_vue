@@ -15,7 +15,7 @@
 <body>
   <div id="app">
     <ul>
-      <Li v-for="task in tasks" v-bind:class="{complete: task.completed}">
+      <Li v-for="task in tasks" v-bind:class="{complete: task.completed}" @click="toggleClass(task)">
         {{ task.item }}
       </Li>
     </ul>
@@ -29,6 +29,11 @@
           {item: 'go to shop',completed: true},
           {item: 'go to ski',completed: false}
         ]
+      },
+      methods: {
+        toggleClass(task){
+          task.completed = task.completed ? false : true
+        }
       }
     })
   </script>
